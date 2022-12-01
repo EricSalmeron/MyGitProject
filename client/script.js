@@ -18,45 +18,6 @@ function lowerCaseName(string) {
 
 
 
-const labels = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-  ];
-
-  const data = {
-    labels: labels,
-    datasets: [{
-      label: 'My First dataset',
-      backgroundColor: 'rgb(255, 99, 132)',
-      borderColor: 'rgb(255, 99, 132)',
-      data: [0, 10, 5, 2, 20, 30, 45],
-    }]
-  };
-
-  const config = {
-    type: 'line',
-    data: data,
-    options: {}
-  };
-
- 
-
-function shapeData(array) {
-    return array.reduce((collection, item) => {
-        if(!collection[item.category]){
-            collection[item.category] = [item];
-        } else {
-            collection[item.category].push(item);
-        }
-        return collection;
-    }, {});
-}
-
-
 async function getPlayer(e) {
   try{
     const name = document.querySelector("#namePlayer").value;
