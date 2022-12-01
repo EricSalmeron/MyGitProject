@@ -16,9 +16,19 @@ function lowerCaseName(string) {
   return string.toLowerCase();
 }
 
+const ctx = document.getElementById('myChart');
+
+function makeChart(){
+  
+}
+
+function makeChart(){
+  
+}
 
 
 async function getPlayer(e) {
+  
   try{
     const name = document.querySelector("#namePlayer").value;
     const playerName = lowerCaseName(name);
@@ -36,7 +46,9 @@ async function getPlayer(e) {
     const data = await newData.json();
       console.log(data);
       const playerID = data.response[0].id;
-      const range = data.results;
+      const range = data;
+      const weight = data.response[0].weight.pounds
+      console.log(weight)
       document.querySelector(".playerBox").innerHTML = `
       <div>
       </div>
@@ -64,6 +76,24 @@ async function getPlayer(e) {
             `;
             
             
+        });
+        new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: ['weight'],
+            datasets: [{
+              label: '# of Votes',
+              data: [weight],
+              borderWidth: 1
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
         });
 
   } catch (err) {
